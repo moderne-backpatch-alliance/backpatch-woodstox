@@ -1,0 +1,21 @@
+schema: osera-patch-evidence/0.1.0
+producer: moderne
+release: 5.0.3.1-backpatch-00001
+baseline: v5.0.3+backpatch.baseline
+fixes:
+  - cve: CVE-2022-40152
+    upstream_fix_url: https://github.com/advisories/GHSA-3f7h-mf4q-vrm4
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2022-40152
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-woodstox/commit/ad77aab
+    basis: adapted
+    artifacts:
+      - com.fasterxml.woodstox:woodstox-core
+    note: New in this release; ported onto 5.0.3; fixed at 5.0.3.1-backpatch-00001 (backpatch-woodstox@ad77aab).
+tests:
+  commit: ad77aabb6c61b1b2629f3d6f79e41cf9b4bf33d6
+  command: mvn -B -T1 -Dossindex.skip=true -Dmaven.test.failure.ignore=true clean test
+  runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
+  report: woodstox-core-5.0.3.1-backpatch-00001-tests.zip
+  report_sha256: d8ecc95b46c8f2b9d3fd16270a1cd5172aceba72bf83f8c45194e523119d51a7
+  result: pass
+  note: 828 tests at the patch commit, 0 of them skipped by the suite, 0 failed, 0 errors. Main and test classes compiled with Zulu 1.7.0_79's javac (Central's 5.0.3 jar names Build-Jdk 1.7.0_79); tests run on Zulu 8.
